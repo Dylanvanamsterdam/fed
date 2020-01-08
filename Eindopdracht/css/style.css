@@ -32,6 +32,7 @@ ul {
 a {
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 a:hover {
@@ -54,8 +55,8 @@ a:hover {
 }
 
 nav {
-    display:flex;
-    width:100%;
+    display: flex;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -64,12 +65,10 @@ nav {
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    
+
 }
 
-.item {
-    
-}
+.item {}
 
 /*=====
 Search bar
@@ -79,7 +78,7 @@ Search bar
 .zoeken {
     padding: 15px 5px;
     display: flex;
-    
+
 }
 
 button {
@@ -95,8 +94,12 @@ button {
     height: 2.9em;
     width: 20em;
     font-size: 0.8em;
+    color: white;
 }
 
+#search::placeholder {
+    color: white;
+}
 
 /*=========
 Main 
@@ -107,19 +110,23 @@ main {
 
 }
 
+.overlay-content {
+    display: none;
+}
+
 img {
     width: 100%;
 }
 
 article {
     width: 100%;
-    padding-bottom: 2em;   
+    padding-bottom: 2em;
 }
 
 /*=========
 Contact 
 =========*/
-main{
+main {
     min-height: 80vh;
 }
 
@@ -137,33 +144,69 @@ main > form {
     margin-bottom: 1em;
 }
 
-input {
-    width: 100%;
-    border: 1px solid #CCC;
-    background: #FFF;
-    margin: 0 0 5px;
-    padding: 10px;
+#contact > h4 {
+    margin-bottom: 1.5em;
 }
 
-textarea{
+/* input {
     width: 100%;
     border: 1px solid #CCC;
     background: #FFF;
     margin: 0 0 5px;
     padding: 10px;
-    resize:none;
+}*/
+
+input,
+textarea {
+    box-sizing: border-box;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    height: 45px;
 }
-#bericht{
+
+input[type="submit"] {
+    position: relative;
+    display: block;
+    color: white;
+    background: #BA4A4A;
+    font-size: 1em;
+    text-align: center;
+    border: 0.1em solid #933434;
+    border-width: 1px 1px 3px;
+}
+
+input[type="submit"]:hover {
+    background: #933434;
+}
+
+/*textarea {
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    resize: none;
+}*/
+
+#bericht {
     height: 10em;
-    max-width:100%;
+    max-width: 100%;
 }
+
 /*=========
 Footer
 =========*/
-Footer{
+Footer {
     background: #BA4A4A;
 }
-Footer > p{
+
+Footer > p {
     color: white;
     padding: 4em;
 }
@@ -174,24 +217,36 @@ Tablet menu
 
 
 @media all and (min-width: 600px) {
-    .menu {
+    .menu {}
+
+    .main {
+        grid-template-columns: 2fr 1fr;
     }
 
-    main {
+    .mainindex {
+        display: grid;
         grid-template-columns: 1fr 1fr;
     }
 
     .logo {
         flex: 1;
     }
-    .zoeken{
-    margin-left: auto;
-}
+
+    .zoeken {
+        margin-left: auto;
+    }
 
 }
 
+/*=========
+Phone menu 
+=========*/
 
-
+@media (max-width: 600px) {
+    .main {
+        grid-template-columns: 2fr 1fr;
+    }
+}
 
 /*==========
 Desktop menu
@@ -203,10 +258,10 @@ Desktop menu
         display: block;
         width: auto;
     }
-    
+
     #contact {
-    margin: 1em 2em;
-    grid-column-start: 2;
+        margin: 1em 2em;
+        grid-column-start: 2;
     }
 
     .logo {
@@ -225,9 +280,68 @@ Desktop menu
         padding-right: 0;
     }
 
-    main {
+    .mainindex {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
 
     }
+
+    .main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+}
+
+
+
+
+/*=====
+Popup
+=====*/
+
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
