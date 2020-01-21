@@ -16,6 +16,7 @@ body {
 
 main {
     padding: 1em 0em;
+    min-height: 80vh;
 }
 
 header {
@@ -68,8 +69,6 @@ nav {
 
 }
 
-.item {}
-
 /*=====
 Search bar
 =====*/
@@ -82,12 +81,16 @@ Search bar
 }
 
 button {
-    color: white;
-    background-color: #2f58ae;
+    color: #FFFFFF;
+    background-color: #385BA8;
     width: 4.9em;
     height: 2.9em;
     border: none;
     font-size: 0.8em;
+}
+
+button:hover {
+    background-position: right center;
 }
 
 #search {
@@ -104,18 +107,14 @@ button {
 /*=========
 Main 
 =========*/
-main {
-    display: grid;
-    grid-template-columns: 1fr;
-
-}
-
-.overlay-content {
-    display: none;
-}
 
 img {
     width: 100%;
+    transition: all .4s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1);
 }
 
 article {
@@ -123,16 +122,59 @@ article {
     padding-bottom: 2em;
 }
 
+section > h3 {
+    grid-area: 7;
+    padding: 0 1em 1em 1em;
+}
+
+article > h2::before {
+    content: "$49 per dag ";
+    color: mediumseagreen;
+
+}
+
+/*=========
+met behulp van: https://developer.mozilla.org/en-US/docs/Web/CSS/::after gemaakt
+========*/
+
+span[data-descr] {
+    position: relative;
+    text-decoration: none;
+    cursor: help;
+}
+
+span[data-descr]:hover::after,
+span[data-descr]:focus::after {
+    content: attr(data-descr);
+    position: absolute;
+    left: 0;
+    top: 24px;
+    min-width: 200px;
+    border: 1px #aaaaaa solid;
+    border-radius: 10px;
+    background-color: #ffffcc;
+    padding: 0.8em;
+    color: #000000;
+    font-size: 0.6em;
+    z-index: 1;
+}
+
 /*=========
 Contact 
 =========*/
-main {
-    min-height: 80vh;
+
+#form {
+    margin: 0 auto;
+    width: 40%;
 }
 
 main > form {
     display: block;
-    width: 100%;
+    width: 50%;
+}
+
+label {
+    text-align: left;
 }
 
 #contact {
@@ -181,7 +223,8 @@ input[type="submit"] {
     border-width: 1px 1px 3px;
 }
 
-input[type="submit"]:hover {
+
+input[type="submit"]:focus {
     background: #933434;
 }
 
@@ -219,9 +262,6 @@ Tablet menu
 @media all and (min-width: 600px) {
     .menu {}
 
-    .main {
-        grid-template-columns: 2fr 1fr;
-    }
 
     .mainindex {
         display: grid;
@@ -243,8 +283,8 @@ Phone menu
 =========*/
 
 @media (max-width: 600px) {
-    .main {
-        grid-template-columns: 2fr 1fr;
+    .mainindex {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -286,11 +326,6 @@ Desktop menu
 
     }
 
-    .main {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-
-    }
 }
 
 
@@ -298,6 +333,7 @@ Desktop menu
 
 /*=====
 Popup
+van https://sabe.io/tutorials/how-to-create-modal-popup-box
 =====*/
 
 
@@ -319,7 +355,7 @@ Popup
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background: white;
     padding: 1rem 1.5rem;
     width: 24rem;
     border-radius: 0.5rem;
@@ -344,4 +380,9 @@ Popup
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+div > h1::after {
+    content: " Deze foodtruck is op het moment uitverkocht";
+    color: orangered;
 }

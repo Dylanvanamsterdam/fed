@@ -18,7 +18,7 @@
                 </li>
             </ul>
             <form class="zoeken">
-                <input id="search" type="text" name="box" placeholder="type hier...">
+                <input id="search" placeholder="type hier..." type="text">
                 <button type="submit">Zoeken</button>
 
             </form>
@@ -27,33 +27,36 @@
 
     <!-- hier begint de main en de artikelen -->
 
-    <main class="mainindex">
-
+    <main>
+<section class="mainindex">
+<h3>Alle Foodtrucks moeten heel teruggebracht worden.</h3>
+<!--       <h2>Foodtruck </h2>-->
         <article>
             <a class="trigger"><img src="images/thecow.jpg" alt=""></a>
-            <h2>The Cow</h2>
+            <h2><span class="description" tabindex="0" data-descr="Deze truck is alleen in Noord-Holland beschikbaar">The Cow</span></h2>
             <p>The cow geeft heerlijk eten.</p>
         </article>
 
-        <!-- Dit is de Popup -->
+        <!-- Dit is de Popup (src: https://sabe.io/tutorials/how-to-create-modal-popup-box) -->
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">×</span>
-                <h1>Wilt u deze truck huren?</h1>
+                <h1>Wilt u deze truck bestellen?</h1>
+                
             </div>
         </div>
 
 
         <article>
-            <a class="trigger"><img src="images/macmart.jpg" alt=""></a>
+            <a><img src="images/macmart.jpg" alt=""></a>
             <h2>Trucks</h2>
-            <p>Macmart .</p>
+            <p>Macmart heeft heerlijke smoothies.</p>
         </article>
 
         <article>
             <a><img src="images/cinnamon.jpg" alt=""></a>
             <h2>Cinnamon Snail</h2>
-            <p>bekijk de foodtrucks.</p>
+            <p>Lekkere zoete snacks.</p>
         </article>
 
         <article>
@@ -73,12 +76,14 @@
             <h2>MooBBQ</h2>
             <p>MooBBQ heeft heerlijke BBQ gerechten.</p>
         </article>
+        
+        </section>
     </main>
 
     <!-- Hier is de footer-->
 
     <footer>
-        <p class="footertext">©Dylan van Amsterdam - 5006358 - FED</p>
+        <p class="footertext">Dylan van Amsterdam - 50076358 - FED</p>
     </footer>
 
 
